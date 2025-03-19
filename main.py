@@ -6,10 +6,16 @@ import os
 load_dotenv()
 
 # Configure Auth Details
-uri = os.getenv("NEO4J_URI")
-username = os.getenv('NEO4J_USERNAME')
-password = os.getenv('NEO4J_PASSWORD')
-database = os.getenv("NEO4J_DATABASE")
+# uri = os.getenv("NEO4J_URI")
+# username = os.getenv('NEO4J_USERNAME')
+# password = os.getenv('NEO4J_PASSWORD')
+# database = os.getenv("NEO4J_DATABASE")
+
+
+uri = os.getenv("AURA_NEO4J_URI")
+username = os.getenv('AURA_NEO4J_USERNAME')
+password = os.getenv('AURA_NEO4J_PASSWORD')
+# database = os.getenv("NEO4J_DATABASE")
 
 people = [  
     {"name": "Alice", "age": 28},  
@@ -55,7 +61,7 @@ def create_graph(tx):
 
 # Main function  
 def main():  
-    driver = GraphDatabase.driver(uri, auth=basic_auth(username, password), database=database)  
+    driver = GraphDatabase.driver(uri, auth=(username, password)) #, database=database)  
     with driver.session() as session:  
         session.execute_write(create_graph)  
     print("Sample graph has been successfully created.")  
