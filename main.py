@@ -9,7 +9,7 @@ load_dotenv()
 uri = os.getenv("NEO4J_URI")
 username = os.getenv('NEO4J_USERNAME')
 password = os.getenv('NEO4J_PASSWORD')
-database = os.getenv("neo4j")
+database = os.getenv("NEO4J_DATABASE")
 
 people = [  
     {"name": "Alice", "age": 28},  
